@@ -12,9 +12,10 @@ val request = Request.Builder()
 
 OkHttpClient().newCall(request).enqueue(callback)
 
-UDP (Java)
+UDP (Kotlin)
 
 val socket = DatagramSocket()
-val message = "{\"channel\":\"YOUR_CHANNEL_CODE\",\"message\":\"Hello via UDP\"}"
-val packet = DatagramPacket(message.toByteArray(), message.length, InetAddress.getByName("{BASE_URL}/write"), 9999)
+val message = "{\"channel\":\"YOUR_CHANNEL_CODE\",\"message\":\"Hello via UDP from Kotlin\"}"
+val address = InetAddress.getByName("{BASE_URL}/write")
+val packet = DatagramPacket(message.toByteArray(), message.length, address, 9999)
 socket.send(packet)
